@@ -21,9 +21,9 @@ import click
 @click.option('--c', default=0.7, help="The c value in the iterative function.")
 @click.option('--max-iter', default=100, help="Maximum iterations of the function before we assume values have not escaped i.e. are oscillating.")
 @click.option('--escape-value', default=2, help="Value to reach at which point we assume it has escaped i.e. not oscillating.")
-@click.option('--x-max', default=1, help="Grid boundaries on real numbers are [-x-max, x-max].")
+@click.option('--x-max', default=2, help="Grid boundaries on real numbers are [-x-max, x-max].")
 @click.option('--x-step', default=0.01, help="Grid boundaries on real numbers have step size x-step.")
-@click.option('--y-max', default=1, help="Grid boundaries on complex numbers are [-y-max, y-max].")
+@click.option('--y-max', default=2, help="Grid boundaries on complex numbers are [-y-max, y-max].")
 @click.option('--y-step', default=0.01, help="Grid boundaries on complex numbers have step size y-step.")
 def julia(c, max_iter, escape_value, x_max, x_step, y_max, y_step):
     """Plots a Julia set fractal."""
@@ -50,8 +50,8 @@ def julia(c, max_iter, escape_value, x_max, x_step, y_max, y_step):
         W = f(W)
 
 
-    # Plot the image.
-    plt.imshow(E)
+    # Plot the image (need to transpose to get axes correct).
+    plt.imshow(E.T)
     plt.show()
 
 
